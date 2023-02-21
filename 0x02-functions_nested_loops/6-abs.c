@@ -3,12 +3,12 @@
 /**
  * _abs - determine the absolute value of an integer
  * @i: variable to determine the absolute value of an integer
- * Return: u if succesful
+ * Return: i if succesful
  */
 
-int _abs(int u)
+int _abs(int i)
 {
-if (u < 0)
-u *= -1;
-return (u);
+if (i < 0)
+i *= -1;
+return (i);
 }
