@@ -1,17 +1,13 @@
 #include "main.h"
 
 /**
- * print a straight line'
- * print newline if n is 0
- * print newline if n is less than 0
- * Return: always 0
+ * print_line - print a straight line using putchar of n size
+ * @n: size of line
  */
 
-void print_line(n)
+void print_line(int n)
 {
-	for (; n > 0; n--)
-	{
-		_putchar('_');
-	}
-	_putchar('\n');
+for (; n > 0; n--)
+_putchar('_');
+_putchar('\n');
 }
