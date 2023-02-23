@@ -1,9 +1,8 @@
 #include "main.h"
 
 /**
- * print diagonal line
- * @n: number to be printed
- * return: 0 always
+ * print_diagonal - print a straight line using putchar of n size
+ * @n: size of line
  */
 
 void print_diagonal(int n)
