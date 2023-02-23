@@ -1,39 +1,26 @@
-#include "main.h"
 #include <stdio>
 
-/**
- * print 1 too 100
- * print fizz at every multiples of 3
- * print buzz at every multiples of 5
- * print fizzbuzz at every multiples of the product of 3 and 5
- * Return: always zero
+//**
+ * main - print square of n size
+ * Return: 0 if succesful
  */
 
 int main(void)
 {
-	int i;
-	for (i = 1; i <= 100; i++)
-	{
-		if (i % 15 == 0)
-		{
-			printf("fizzbuzz");
-			printf(' ');
-			continue;
-		}
-		else if(i % 5 == 0)
-		{
-			printf("buzz");
-			printf(' ');
-			continue;
-		}
-		else if(i % 3 == 0)
-		{
-			printf("fizz");
-			printf(' ');
-			continue;
-		}
-		printf("%d",i);
-
-	}
-	return (0);
+int x;
+for (x = 1; x <= 100; x++)
+{
+if (x % 3 == 0 && x % 5 == 0)
+printf("FizzBuzz");
+else if (x % 3 == 0)
+printf("Fizz");
+else if (x % 5 == 0)
+printf("Buzz");
+else
+printf("%d", x);
+if (x < 100)
+printf(" ");
+}
+putchar('\n');
+return (0);
 }
