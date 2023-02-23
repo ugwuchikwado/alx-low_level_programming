@@ -1,6 +1,6 @@
 #include <stdio>
 
-//**
+/**
  * main - print square of n size
  * Return: 0 if succesful
  */
