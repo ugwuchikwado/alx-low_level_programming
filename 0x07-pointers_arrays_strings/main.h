@@ -1,18 +1,16 @@
-#include "main.h"
+#ifndef MAIN_H
+#define MAIN_H
 
-/**
- * _memset - memset function
- * @s: start point of string to change
- * @b: value that will replace
- * @n: number of bytes to change
- * Return: changed pointer
- */
+int _putchar(char c);
+char *_memset(char *s, char b, unsigned int n);
+char *_memcpy(char *dest, char *src, unsigned int n);
+char *_strchr(char *s, char c);
+unsigned int _strspn(char *s, char *accept);
+char *_strpbrk(char *s, char *accept);
+char *_strstr(char *haystack, char *needle);
+void print_chessboard(char (*a)[8]);
+void set_string(char **s, char *to);
+void print_diagsums(int *a, int size);
 
-char *_memset(char *s, char b, unsigned int n)
-{
-	char *t = s;
+#endif /*MAIN_H*/
 
-	for (; n != 0; t++, n--)
-		*t = b;
-	return (s);
-}
