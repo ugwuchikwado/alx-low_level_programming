@@ -16,8 +16,8 @@ int get_length(char *str, int len)
 }
 /**
  * find_palindrom - gets length of string
- * @f: pointer to a string
- * @r: length of a string
+ * @p: pointer to a string
+ * @q: length of a string
  * @len: length of a string
  * Return: return 0 if its not palindrome return 1 if it is
  */
