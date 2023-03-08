@@ -25,7 +25,7 @@ int find_palindrom(char *p, char *q, int len)
 {
 	if (*p == *(q + len) && len > 1)
 	{
-		f++;
+		p++;
 		return (find_palindrom(p, q, --len));
 	}
 	if (len == 1)
