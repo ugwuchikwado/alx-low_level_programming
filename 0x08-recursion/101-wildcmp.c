@@ -37,12 +37,12 @@ int compare(char *c1, char *c2)
 }
 
 /**
- * wildcard_compare - compare string 1 and string 2 using wildcard
+ * wildcmp - compare string 1 and string 2 using wildcard
  * @s1: string 1
  * @s2: string 2
  * Return: return 0 if no match return 1 if match
  */
-int wildcard_compare(char *s1, char *s2)
+int wildcmp(char *s1, char *s2)
 {
 	return (compare(s1, s2));
 }
