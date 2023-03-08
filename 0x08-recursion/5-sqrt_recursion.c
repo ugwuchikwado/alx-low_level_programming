@@ -1,18 +1,18 @@
 #include "main.h"
 
 /**
- *sqrt - helps sqrt function find sqrt
+ *find_sqrt - helps sqrt function find sqrt
  * @n: needs to be sqrt
  * @x: sqrt of n
  * Return: natural sqrt of n
  */
 
-int sqrt(int n, int x)
+int find_sqrt(int n, int x)
 {
 	if (x * x == n)
 		return (x);
 	else if (x * x < n)
-		return (sqrt(n, ++x));
+		return (find_sqrt(n, ++x));
 	return (-1);
 }
 
@@ -24,5 +24,5 @@ int sqrt(int n, int x)
 
 int _sqrt_recursion(int n)
 {
-	return (sqrt(n, 0));
+	return (find_sqrt(n, 0));
 }
