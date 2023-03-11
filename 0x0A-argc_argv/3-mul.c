@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i,j,pdt;
+	int i, j, pdt;
 
 	if (argc != 3)
 	{
@@ -23,6 +23,5 @@ int main(int argc, char *argv[])
 		pdt = i * j;
 		printf("%d\n", pdt);
 	}
-	return (0);		
-
+	return (0);	
 }
