@@ -8,38 +8,35 @@
  * Return: a pointer to a 2 dimensional array of integers
  */
 
-int **alloc_grid(int width, int height)
-{
-	int **grid, row, col;
+int **alloc_grid(int width, int height) {
+    // Check if width or height is 0 or negative
+    if (width <= 0 || height <= 0) {
+        return NULL;
+    }
 
-	if (width < 1 || height < 1)
-		return (NULL);
+    // Allocate memory for the grid
+    int **grid = (int **)malloc(height * sizeof(int *));
+    if (grid == NULL) {
+        return NULL; // Return NULL on failure
+    }
 
-	grid = (int **)malloc(height * sizeof(int *));
+    // Allocate memory for each row and initialize elements to 0
+    for (int i = 0; i < height; ++i) {
+        grid[i] = (int *)malloc(width * sizeof(int));
+        if (grid[i] == NULL) {
+            // Free previously allocated memory if allocation fails
+            for (int j = 0; j < i; ++j) {
+                free(grid[j]);
+            }
+            free(grid);
+            return NULL; // Return NULL on failure
+        }
+        
+        // Initialize elements to 0
+        for (int j = 0; j < width; ++j) {
+            grid[i][j] = 0;
+        }
+    }
 
-	if (!grid)
-	{
-		free(grid);
-		return (NULL);
-	}
-
-	for (row = 0; row < height; row++)
-	{
-		grid[row] = (int *)malloc(width * sizeof(int));
-
-		if (!grid[row])
-		{
-			while (row)
-			{
-				free(grid[row]);
-				row--;
-			}
-			free(grid);
-			return (NULL);
-		}
-		for (col = 0; col < width; col++)
-			grid[row][col] = 0;
-	}
-
-	return (grid);
+    return grid; // Return pointer to the 2D array
 }
