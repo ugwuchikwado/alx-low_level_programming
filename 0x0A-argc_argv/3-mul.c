@@ -23,9 +23,5 @@ int main(int argc, char *argv[])
 		pdt = i * j;
 		printf("%d\n", pdt);
 	}
-<<<<<<< HEAD
 	return (0);	
-=======
-	return (0);
->>>>>>> a65cd679cbd230220368419eb49e954d68753b27
 }
