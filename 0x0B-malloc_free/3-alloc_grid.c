@@ -8,35 +8,45 @@
  * Return: a pointer to a 2 dimensional array of integers
  */
 
-int **alloc_grid(int width, int height) {
-    // Check if width or height is 0 or negative
-    if (width <= 0 || height <= 0) {
-        return NULL;
-    }
+int **alloc_grid(int width, int height)
+{
+	int f, p, t, z;
+	int **c;
 
-    // Allocate memory for the grid
-    int **grid = (int **)malloc(height * sizeof(int *));
-    if (grid == NULL) {
-        return NULL; // Return NULL on failure
-    }
+	if (width <= 0 || height <= 0)
+		return (NULL);
 
-    // Allocate memory for each row and initialize elements to 0
-    for (int i = 0; i < height; ++i) {
-        grid[i] = (int *)malloc(width * sizeof(int));
-        if (grid[i] == NULL) {
-            // Free previously allocated memory if allocation fails
-            for (int j = 0; j < i; ++j) {
-                free(grid[j]);
-            }
-            free(grid);
-            return NULL; // Return NULL on failure
-        }
-        
-        // Initialize elements to 0
-        for (int j = 0; j < width; ++j) {
-            grid[i][j] = 0;
-        }
-    }
+	c = malloc(sizeof(int *) * height);
 
-    return grid; // Return pointer to the 2D array
+	if (c == NULL)
+	{
+		free(c);
+		return (NULL);
+	}
+
+	for (f = 0; f < height; f++)
+	{
+		c[i] = malloc(sizeof(int) * width);
+
+		if (a[f] == NULL)
+		{
+			for (p = f; p >= 0; p--)
+			{
+				free(c[p]);
+			}
+
+			free(c);
+			return (NULL);
+		}
+	}
+
+	for (t = 0; t < height; t++)
+	{
+		for (z = 0; z < width; z++)
+		{
+			a[t][z] = 0;
+		}
+	}
+
+	return (c);
 }
