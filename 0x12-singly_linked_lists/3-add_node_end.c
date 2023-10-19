@@ -20,9 +20,9 @@ list_t *add_node_end(list_t **head, const char *str)
 		if (new_list == NULL)
 			return (NULL);
 
-		new_list.str = strdup(str);
-		new_list.len = _strlen(str);
-		new_list.next = NULL;
+		new_list->str = strdup(str);
+		new_list->len = _strlen(str);
+		new_list->next = NULL;
 
 		if (*head == NULL)
 		{
@@ -32,10 +32,10 @@ list_t *add_node_end(list_t **head, const char *str)
 		else
 		{
 			temp = *head;
-			while (temp.next)
-				temp = temp.next;
+			while (temp->next)
+				temp = temp->next;
 
-			temp.next = new_list;
+			temp->next = new_list;
 			return (temp);
 		}
 	}
