@@ -1,53 +1,57 @@
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdio.h>
 #include "lists.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
- * print_listint_safe - Prints a listint_t linked list safely (handles loops).
- * @head: Pointer to the head of the linked list.
- * Return: Number of nodes in the list.
+ * find_listint_loop_pl - finds a loop in a linked list
+ *
+ * @head: linked list to search
+ *
+ * Return: address of node where loop starts/returns, NULL if no loop
+ */
+listint_t *find_listint_loop_pl(listint_t *head)
+{
+	listint_t *ptr, *end;
+
+	if (head == NULL)
+		return (NULL);
+
+	for (end = head->next; end != NULL; end = end->next)
+	{
+		if (end == end->next)
+			return (end);
+		for (ptr = head; ptr != end; ptr = ptr->next)
+			if (ptr == end->next)
+				return (end->next);
+	}
+	return (NULL);
+}
+
+/**
+ * print_listint_safe - prints a linked list, even if it
+ * has a loop
+ *
+ * @head: head of list to print
+ *
+ * Return: number of nodes printed
  */
 size_t print_listint_safe(const listint_t *head)
 {
-    const listint_t *slow, *fast;
-    size_t count = 0;
+	size_t len = 0;
+	int loop;
+	listint_t *loopnode;
 
-    slow = head;
-    fast = head;
+	loopnode = find_listint_loop_pl((listint_t *) head);
 
-    while (slow && fast && fast->next)
-    {
-        printf("[%p] %d\n", (void *)slow, slow->n);
-        slow = slow->next;
-        fast = fast->next->next;
+	for (len = 0, loop = 1; (head != loopnode || loop) && head != NULL; len++)
+	{
+		printf("[%p] %d\n", (void *) head, head->n);
+		if (head == loopnode)
+			loop = 0;
+		head = head->next;
+	}
 
-        count++;
-
-        /* If there is a loop, break the loop */
-        if (slow == fast)
-        {
-            printf("-> [%p] %d\n", (void *)slow, slow->n);
-            break;
-        }
-    }
-
-    /* Handle the case where there is a loop */
-    if (slow == fast)
-    {
-        slow = head;
-        while (slow != fast)
-        {
-            printf("[%p] %d\n", (void *)slow, slow->n);
-            slow = slow->next;
-            fast = fast->next;
-
-            count++;
-        }
-        printf("-> [%p] %d\n", (void *)slow, slow->n);
-    }
-
-    return count;
+	if (loopnode != NULL)
+		printf("-> [%p] %d\n", (void *) head, head->n);
+	return (len);
 }
-
