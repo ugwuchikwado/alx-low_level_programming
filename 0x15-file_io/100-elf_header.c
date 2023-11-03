@@ -28,13 +28,13 @@ void _checkelf(char *h)
  */
 void _magic(char *h)
 {
-	int j;
+	int i;
 
 	printf("ELF Header:\n  Magic:   ");
 
-	for (j = 0; j < 15; j++)
-		printf("%02x ", (unsigned int)h[j]);
-	printf("%02x", (unsigned int)h[j]);
+	for (i = 0; i < 15; i++)
+		printf("%02x ", (unsigned int)h[i]);
+	printf("%02x", (unsigned int)h[i]);
 
 	printf("\n");
 }
@@ -217,32 +217,32 @@ void _entry(char *h, int x64)
 	if (h[5] == 1)
 	{
 		/* Little Endian */
-		j = count;
-		while (h[j] == 0 && j > 24)
-			j--;
-		printf("%x", h[j]);
-		j--;
+		i = count;
+		while (h[i] == 0 && i > 24)
+			i--;
+		printf("%x", h[i]);
+		i--;
 
-		while (j >= 24)
+		while (i >= 24)
 		{
-			printf("%02x", (unsigned char) h[j]);
-			j--;
+			printf("%02x", (unsigned char) h[i]);
+			i--;
 		}
 	}
 	else
 	{
 		/* Big Endian */
 
-		j = 24;
-		while (h[j] == 0)
-			j++;
-		printf("%x", h[j]);
-		j++;
+		i = 24;
+		while (h[i] == 0)
+			i++;
+		printf("%x", h[i]);
+		i++;
 
-		while (j <= count)
+		while (i <= count)
 		{
-			printf("%02x", (unsigned char) h[j]);
-			j++;
+			printf("%02x", (unsigned char) h[i]);
+			i++;
 		}
 	}
 	printf("\n");
